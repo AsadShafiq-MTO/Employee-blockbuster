@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" xmlns:th="htttp://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<section>
+	<div th:switch="${employees}" class="container ">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 th:case="null">No users yet!</h2>
+                    <div th:case="*">
+                        <h2 class="my-2">Employees</h2>
+                        <p class="my-3"><a href="/createEmployee" class="btn btn-primary"><i class="fas fa-user-plus ml-2"></i></a></p>
+              
+                        <table class="table table-striped table-responsive-md thead-dark">
+                            <thead >
+                            <tr class="thead-dark">
+                                <th scope="col">Id</th>
+								<th scope="col">Name</th>
+								<th scope="col">ImageUrl</th>
+								<th scope="col">Job Title</th>
+								<th scope="col">Qualification</th>
+								<th scope="col">DateOfBirth</th>
+								<th scope="col">E-mail</th>
+								<th scope="col">Gender</th>
+								<th scope="col">Address</th>
+								<th scope="col">Phone No</th>
+								<th scope="col">Salary</th>
+								<th scope="col">EmployeeType</th>
+								<th scope="col">StartDate</th>
+							</tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="employee : ${employees}">
+										<td th:text="${employee.id}"></td>
+										<td th:text="${employee.name}"></td>
+										<td><img th:src="@{${employee.imagePath}}" style="width:80px;height:80px;"/></td>
+										<!-- <td th:text="${employee.image}"></td> -->
+										<td  th:text="${employee.jobTitle}" ></td>
+										<td th:text="${employee.qualification}"></td>
+										<td th:text="${employee.dateOfBirth}"></td>
+										<td th:text="${employee.email}"></td>
+										<td th:text="${employee.gender}"></td>
+										<td th:text="${employee.address}"></td>
+										<td th:text="${employee.phone}"></td>
+										<td th:text="${employee.salary}"></td>
+										<td th:text="${employee.employeeType}"></td>
+										<td th:text="${employee.startDate}"></td>
+										<td><a th:href="@{/editEmployee/{id}(id=${employee.id})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
+                                    <td><a th:href="@{/deleteEmployee/{id}(id=${employee.id})}" class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>      
+                 </div>
+            </div>
+        </div>
+	</section>	
+</body>
+</html>

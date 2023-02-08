@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="htttp://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+    <head>
+        <meta charset="utf-8" />        
+        <title>Employee-Blockbuster</title>
+    </head>
+<body class="sb-nav-fixed">
+	<section>
+		<main>
+			<div class="container-fluid px-4 text-info bg-gray">
+				<h1 class="mt-4">Active User</h1>
+				<ol class="breadcrumb mb-4 ">
+					<li class="breadcrumb-item"><a th:href="@{/}">Dashboard</a></li>
+					<li class="breadcrumb-item active">Tables</li>
+				</ol>				
+				<div class="card mb-4 text-bg-primary">
+					<div class="card-header">
+						<i class="fas fa-table me-1"></i>User Data
+					</div>
+					<div class="card-body">
+						<table id="datatablesSimple" class="table table-hover">
+							<thead class="thead-dark">
+								<tr>
+									<th>Id</th>
+									<th>Firstname</th>
+									<th>Lastname</th>
+									<th>email</th>
+									<th>Password</th>
+									<th>Agreed</th>
+									<th>Role</th>
+								</tr>
+							</thead>
+							<tfoot>
+								<tr>
+									<th>Id</th>
+									<th>Firstname</th>
+									<th>Lastname</th>
+									<th>email</th>
+									<th>Password</th>
+									<th>Agreed</th>
+									<th>Role</th>
+								</tr>
+							</tfoot>
+							<tbody>
+								<tr th:each="user : ${users}">
+									<td th:text="${user.id}"></td>
+									<td th:text="${user.firstName}"></td>
+									<td th:text="${user.lastName}"></td>
+									<td th:text="${user.email}"></td>
+									<td th:text="${user.password}"></td>
+									<td th:text="${user.agreed}"></td>
+									<td th:text="${user.role}"></td>
+									<!-- <td><a th:href="@{/edit/{id}(id=${employee.id})}"class="btn btn-primary">
+											<i class="fas fa-user-edit ml-2"></i></a>
+										</td>
+										<td><a th:href="@{/deleteEmployee/{id}(id=${employee.id})}"class="btn btn-primary">
+											<i class="fas fa-user-times ml-2"></i></a>
+										</td> -->
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</main>
+	</section>
+</body>
+</html>

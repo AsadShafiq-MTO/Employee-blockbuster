@@ -1,0 +1,30 @@
+body {
+	
+	 background: url(../images/registerBack.jpg)no-repeat center center fixed;
+     background-size: cover;
+	
+}
+
+ .imgs {
+	
+	
+	size: 30px;
+	color:red;
+	border-radius: 10px;
+	max-width: 300px;
+	 max-height: 45px;
+	
+}
+
+
+@media screen and (min-width: 48em) {
+	 .imgs {
+		max-width: 600px;
+	}
+}
+
+ .imgs {
+    /* display: inline-block; */
+    max-height: 45px;
+    /* width: auto; */
+}

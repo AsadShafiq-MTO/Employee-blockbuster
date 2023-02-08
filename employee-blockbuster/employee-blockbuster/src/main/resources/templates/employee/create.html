@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en" xmlns:th="htttp://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<section>
+	<!-- form -->
+		<main>
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-12">
+						<div class="card shadow-lg border-0 rounded-lg mt-2 bg-info ">
+							<div class="container my-5 ">
+								<h2 class="mb-2">New Employee</h2>
+								<div class="row">
+
+									<form action="#" th:action="@{/addEmployee}"
+										th:object="${employee}" enctype="multipart/form-data"
+										method="post">
+										<div class="form-row">
+										
+											<div class="row mb-3">
+												<div class="form-group col-md-4">
+													<label for="name" class="col-form-label">Name</label> <input
+														type="text" th:field="*{name}" class="form-control"
+														name="name"
+														th:classappend="${#fields.hasErrors('name')?'is-invalid':''}"
+														id="name" placeholder="Name">
+													<div class="invalid-feedback"
+														th:each="e : ${#fields.errors('name')}" th:text="${e}">
+													</div>
+												</div>
+												<div class="form-group col-md-4">
+													<label for="fileImage" class="col-form-label">Image</label>
+													<input type="file" class="form-control" name="fileImage"
+														id="fileImage" accept="image/png,image/jpeg"
+														required="required">													
+												</div>
+												<div class="form-group col-md-4 ml-xl-5 mt-0">
+													<img id="thumbnail" alt="Profile Image" src=""
+														class="rounded float-right col-md-2"
+														style="width: 200px; height: 200px">
+												</div>
+											</div>
+											
+											<div class="row mb-3">
+												<div class="form-group col-md-4">
+													<label for="jobTitle" class="col-form-label">Job
+														Title</label> <select th:field="*{jobTitle}"
+														class="form-control btn-secondary " name="jobTitle"
+														th:classappend="${#fields.hasErrors('jobTitle')?'is-invalid':''}"
+														id="jobTitle">
+														<option value="">Please Select</option>
+														<option th:value="CEO" th:text="CEO"></option>
+														<option th:value="Architect">Architect</option>
+														<option th:value="ProjectManager">Project Manager</option>
+														<option th:value="HrManager">HR Manager</option>
+														<option th:value="WebDeveloper">Web Developer</option>
+														<option th:value="QualityAssurance">Quality
+															Assurance</option>
+														<option th:value="Internee">Internee</option>
+													</select>
+													<div class="invalid-feedback"
+														th:each="e : ${#fields.errors('jobTitle')}" th:text="${e}">
+													</div>
+												</div>
+												<div class="form-group col-md-4">
+													<label for="qualification" class="col-form-label">Qualification</label>
+													<select th:field="*{qualification}"
+														class="form-control btn-secondary " name="qualification"
+														th:classappend="${#fields.hasErrors('qualification')?'is-invalid':''}"
+														id="jobTitle">
+														<option value="">Plese Select</option>
+														<option th:value="BSCS">BS-Computer-Science</option>
+														<option th:value="BSEE">BS-Electrical-Engineer</option>
+														<option th:value="BSIT">BS-Information-Technology</option>
+														<option th:value="BSB">BS-Botany</option>
+														<option th:value="BBA">Bachelor-of-Business-Administration</option>
+														<option th:value="MSCS">MS-Computer-Science</option>
+														<option th:value="MSEE">MS-Electrical-Enginee</option>
+														<option th:value="MSIT">MS-Information-Technology</option>
+														<option th:value="MSB">MS-Botany</option>
+														<option th:value="MBA">Master-of-Business-Administration</option>
+													</select>
+													<div class="invalid-feedback"
+														th:each="e : ${#fields.errors('qualification')}"
+														th:text="${e}"></div>
+												</div>
+											</div>
+											
+											<div class="row mb-3">
+												<div class="form-group col-md-6">
+													<label for="email" class="col-form-label">E-mail</label> <input
+														type="email" th:field="*{email}" class="form-control"
+														name="email"
+														th:classappend="${#fields.hasErrors('email')?'is-invalid':''}"
+														id="email" placeholder="Enter Email">
+													<div class="invalid-feedback"
+														th:each="e : ${#fields.errors('email')}" th:text="${e}">
+													</div>
+												</div>
+												<div class="form-group col-md-3">
+													<label for="gender" class="col-form-label">Gender</label> <select
+														class="form-control btn-secondary dropdown-toggle"
+														name="gender"
+														th:classappend="${#fields.hasErrors('gender')?'is-invalid':''}"
+														th:field="*{gender}" id="dropdownMenuButton">
+														<option value="">Plese Select</option>
+														<option th:value="Male">Male</option>
+														<option th:value="Female">Female</option>
+													</select>
+													<div class="invalid-feedback"
+														th:each="e : ${#fields.errors('gender')}" th:text="${e}">
+													</div>
+												</div>												
+												<div class="form-group col-md-3">
+													<label for="dateOfBirth" class="col-form-label">Birth
+														Date</label> <input type="date" th:field="*{dateOfBirth}"
+														class="form-control" name="dateOfBirth"
+														th:classappend="${#fields.hasErrors('dateOfBirth')?'is-invalid':''}"
+														id="dateOfBirth" placeholder="Please Select Qualification">
+													<div class="invalid-feedback"
+														th:each="e : ${#fields.errors('dateOfBirth')}"
+														th:text="${e}"></div>
+												</div>
+											</div>
+											
+											<div class="row mb-3">
+												<div class="form-group col-md-6">
+													<label for="address" class="col-form-label">Address</label>
+													<input type="text" th:field="*{address}"
+														class="form-control" name="address"
+														th:classappend="${#fields.hasErrors('address')?'is-invalid':''}"
+														id="address" placeholder="Enter Address">
+													<div class="invalid-feedback"
+														th:each="e : ${#fields.errors('address')}" th:text="${e}">
+													</div>
+												</div>
+												<div class="form-group col-md-6">
+													<label for="phone" class="col-form-label">Phone
+														Number</label> <input type="text" th:field="*{phone}"
+														class="form-control" name="phone"
+														th:classappend="${#fields.hasErrors('phone')?'is-invalid':''}"
+														id="phone" placeholder="Enter Phone No (03XX-XXXXXXX)">
+													<div class="invalid-feedback"
+														th:each="e : ${#fields.errors('phone')}" th:text="${e}">
+													</div>
+												</div>
+											</div>
+
+											<div class="row mb-3">
+												<div class="form-group col-md-4">
+													<label for="salary" class="col-form-label">Salary</label> <input
+														type="number" th:field="*{salary}" class="form-control"
+														name="salary"
+														th:classappend="${#fields.hasErrors('salary')?'is-invalid':''}"
+														id="salary" placeholder="Enter Salary">
+													<div class="invalid-feedback"
+														th:each="e : ${#fields.errors('salary')}" th:text="${e}">
+													</div>
+												</div>
+												<div class="form-group col-md-4">
+													<label for="employeeType" class="col-form-label">Employment
+														Type</label> <select th:field="*{employeeType}"
+														class="form-control btn-secondary " name="employeeType"
+														th:classappend="${#fields.hasErrors('employeeType')?'is-invalid':''}"
+														id="jobTitle">
+														<option value="">Plese Select</option>
+														<option th:value="FullTime">Full Time</option>
+														<option th:value="PartTime">Part Time</option>
+														<option th:value="OverTime">Over Time</option>
+														<option th:value="Remote">Remote</option>
+													</select>
+													<div class="invalid-feedback"
+														th:each="e : ${#fields.errors('employeeType')}"
+														th:text="${e}"></div>
+												</div>
+												<div class="form-group col-md-4">
+													<label for="startDate" class="col-form-label">Start
+														Date</label> <input type="date" th:field="*{startDate}"
+														class="form-control" name="startDate"
+														th:classappend="${#fields.hasErrors('startDate')?'is-invalid':''}"
+														id="startDate"
+														placeholder="Please Select EmployeeType StartDate">
+													<div class="invalid-feedback"
+														th:each="e : ${#fields.errors('startDate')}"
+														th:text="${e}"></div>
+												</div>
+											</div>
+
+										</div>
+										<!-- <div class="form-group">
+			                                 <div class="form-check">
+				                             <input class="form-check-input" type="checkbox" id="gridCheck">
+				                             <label class="form-check-label" for="gridCheck"> Check me out </label>
+			                                 </div>
+		                                     </div> -->
+										<div class="col-md-6 mt-5">
+											<input type="submit" class="btn btn-primary" value="submit">
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<!--form  --> 	
+	</section>
+</body>
+</html>
